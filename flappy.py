@@ -32,39 +32,39 @@ flying = False
 game_over = False
 score = 0
 death_count = 0
-death_count_text = "Death Count:"
-score_text = "Score :"
-best_text = "Best :"
-start_text = "Click Anywhere to Start"
-scroll_speed = 4
-pipe_gap = 250
-pipe_frequency = 1500 #milliseconds
+death_count_text = "Death Count:" #olme sayisi(alperen cevik)
+score_text = "Score :" #anlik skor(Alperen)
+best_text = "Best :" #yapilan en iyi skor(Alperen)
+start_text = "Click Anywhere to Start" #baslamak icin herhangi bir yere tiklayin yazisi(Alperen)
+scroll_speed = 4 # kusun ve ekranin kayma hizi(Alperen)
+pipe_gap = 250 #boruların ortasindaki boslukların genisligi(Alperen)
+pipe_frequency = 1500 #borularin spawn olma sikligi(Alperen)
 ground_scroll = 0
-last_pipe = pygame.time.get_ticks() - pipe_frequency
+last_pipe = pygame.time.get_ticks() - pipe_frequency #borularin spawninin algoritmasi(Alperen)
 pass_pipe = False
 
 # En yuksek skorumuzun kaydedilen kayit dosyasindan okunmasi(Alperen Cevik)
-savefile = open('saves/data.txt','r')
-high_score = int(savefile.read())
+savefile = open('saves/data.txt','r') #best skorun kaydedildigi txt dosyasi(Alperen)
+high_score = int(savefile.read()) #best skoru kaydetme ve txt dosyasinadn okuma komutu(Alperen)
 savefile.close()
 
 # Ses klasorunu ve icerdigi ses dosyalarini tanimlama(Alperen Cevik)
 s = 'sound'
 
-rst_snd = pygame.mixer.Sound(os.path.join(s, 'reset.wav'))
-jmp_snd = pygame.mixer.Sound(os.path.join(s, 'jump.wav'))
-hscore_snd = pygame.mixer.Sound(os.path.join(s, 'highscore.mp3'))
-death_snd = pygame.mixer.Sound(os.path.join(s, 'death.wav'))
+rst_snd = pygame.mixer.Sound(os.path.join(s, 'reset.wav')) #reset buyonuna basilinca cikan sesin eklenmesi(Alperen)
+jmp_snd = pygame.mixer.Sound(os.path.join(s, 'jump.wav')) #ziplama ses efekti(Alperen)
+hscore_snd = pygame.mixer.Sound(os.path.join(s, 'highscore.mp3'))#new high score olunca acilan ses(Alperen)
+death_snd = pygame.mixer.Sound(os.path.join(s, 'death.wav')) #high score olmayinca ve olunce cikan ses(Alperen)
 
 
 #Resimlerin yuklenmesi(Alperen Cevik)
 bg = pygame.image.load('img/bg.png')
-ground_img = pygame.image.load('img/ground.png')
-button_img = pygame.image.load('img/restart.png')
-gameover_img = pygame.image.load('img/gameover.png')
-high_score_img = pygame.image.load('img/highscore.png')
-menu_img = pygame.image.load('img/menu.png')
-leftclick = pygame.image.load('img/left2.png')
+ground_img = pygame.image.load('img/ground.png') #zemin resmi(Alperen)
+button_img = pygame.image.load('img/restart.png') #restart butonunun resmi(alperen)
+gameover_img = pygame.image.load('img/gameover.png') #gameover resminin tanimlanmasi(alperen)
+high_score_img = pygame.image.load('img/highscore.png')#new high score resminin tanimlanmasi(Alperen)
+menu_img = pygame.image.load('img/menu.png')#menu arka plani(alperen)
+leftclick = pygame.image.load('img/left2.png')#oyun baslamadan ekrana cikan click resmi(alperen)
 
 # Ekrana metin ciktisi veren komut(Emre Kurt)
 def draw_text(text, font, text_col, x, y):
@@ -73,9 +73,9 @@ def draw_text(text, font, text_col, x, y):
 # Oyunu bastan baslatmak icin gereken sifirlama komutlari(Alperen Cevik)
 def reset_game():
 	pipe_group.empty()
-	flappy.rect.x = 100
-	flappy.rect.y = int(screen_height / 2)
-	score = 0
+	flappy.rect.x = 100 #kusun x ekseninde tanimi(alperen)
+	flappy.rect.y = int(screen_height / 2) #kusun y ekseninde tanimi(alperen)
+	score = 0#yaninca skoru 0 yapan komut(Alperen)
 	return score
 
 # Kus sinifinin tanimi, ozelliklerin ve animasyonlarin olusturulmasi (yagmur umutlu)
@@ -234,7 +234,7 @@ while run:
 	#Zemini cizer ve kaydırır(Emre Kurt)
 	screen.blit(ground_img, (ground_scroll, 768))
 
-	#Puanı kontrol eder(Emre Kurt)
+	#Puanı kontrol eden algoritmanin olusturulmasi(Emre Kurt)
 	if len(pipe_group) > 0:
 		if bird_group.sprites()[0].rect.left > pipe_group.sprites()[0].rect.left\
 			and bird_group.sprites()[0].rect.right < pipe_group.sprites()[0].rect.right\
@@ -265,9 +265,9 @@ while run:
 	if score == 7:
 		scroll_speed = 4.5
 		pipe_gap = 240
-	if score == 17:
-		pipe_gap = 230
-		pipe_frequency = 1450
+	if score == 17: #zorluk seviyesinin artmasi hedeflenen skor(alperen)
+		pipe_gap = 230 #pipe genisliginin azaltilmasi ile zorluk katilmasi(alperen)
+		pipe_frequency = 1450 #pipe lerin olusturulma sikliginin artirilmasi(Alperen)
 	if score == 27:
 		scroll_speed = 5
 		pipe_gap = 220
