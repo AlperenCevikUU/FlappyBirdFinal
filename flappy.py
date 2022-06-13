@@ -30,7 +30,7 @@ gray = (119, 136, 153)
 #// oyun degiskenlerini tanimlama(Alperen Cevik)
 flying = False
 game_over = False
-score = 0
+score = 0 #baslangictaki skorun tanimlanmasi(Alperencevik)
 death_count = 0
 death_count_text = "Death Count:" #olme sayisi(alperen cevik)
 score_text = "Score :" #anlik skor(Alperen)
