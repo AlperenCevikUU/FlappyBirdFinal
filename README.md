@@ -1,2 +1,2 @@
-# FlappyBirdFinal
-FinalOdevi-222080558-222080548-222180510
+# Flappy Bird Replica Final Project
+FinalOdevi-222080558
